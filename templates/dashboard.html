@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Study Planner AI{% endblock %}
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <div>
+            <h1>Study Dashboard</h1>
+            <p class="text-muted">Manage your study plan, track progress, and chat with AI</p>
+        </div>
+        <div class="dashboard-actions">
+            <button class="btn btn-primary" onclick="generatePlan()">
+                <i class="fas fa-calendar-plus"></i> Generate Plan
+            </button>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card stat-card-purple">
+            <div class="stat-card-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-card-body">
+                <span class="stat-card-value" id="totalHours">{{ "%.1f"|format(analysis.total_pending_hours) }}</span>
+                <span class="stat-card-label">Pending Hours</span>
+            </div>
+        </div>
+        <div class="stat-card stat-card-blue">
+            <div class="stat-card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="stat-card-body">
+                <span class="stat-card-value" id="weakCount">{{ analysis.weak_subjects|length }}</span>
+                <span class="stat-card-label">Weak Subjects</span>
+            </div>
+        </div>
+        <div class="stat-card stat-card-green">
+            <div class="stat-card-icon"><i class="fas fa-fire"></i></div>
+            <div class="stat-card-body">
+                <span class="stat-card-value" id="streak">{{ progress.streak }}</span>
+                <span class="stat-card-label">Day Streak</span>
+            </div>
+        </div>
+        <div class="stat-card stat-card-orange">
+            <div class="stat-card-icon"><i class="fas fa-book-open"></i></div>
+            <div class="stat-card-body">
+                <span class="stat-card-value" id="hardTopics">{{ analysis.hard_topics|length }}</span>
+                <span class="stat-card-label">Hard Topics</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card subjects-card">
+            <div class="card-header">
+                <h2><i class="fas fa-book"></i> Subjects</h2>
+            </div>
+            <div class="card-body" id="subjectsContainer">
+                {% for subj in subjects %}
+                <div class="subject-item {% if subj.is_weak %}weak{% endif %}">
+                    <div class="subject-info">
+                        <div class="subject-name">
+                            <span>{{ subj.name }}</span>
+                            {% if subj.is_weak %}
+                            <span class="badge badge-danger">Weak</span>
+                            {% endif %}
+                        </div>
+                        <div class="subject-meta">
+                            <span><i class="fas fa-hourglass-half"></i> {{ "%.1f"|format(subj.total_hours) }}h</span>
+                            <span><i class="fas fa-calendar-check"></i> {{ subj.days_until_exam }} days</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" style="width: {{ subj.confidence }}%"></div>
+                        </div>
+                        <span class="confidence-label">{{ subj.confidence }}% confident</span>
+                    </div>
+                    <div class="subject-topics">
+                        {% for topic in subj.topics %}
+                        <span class="topic-tag tag-{{ topic.difficulty }}">
+                            {% if topic.difficulty == 'hard' %}<i class="fas fa-skull"></i>{% endif %}
+                            {% if topic.difficulty == 'medium' %}<i class="fas fa-book"></i>{% endif %}
+                            {% if topic.difficulty == 'easy' %}<i class="fas fa-check-circle"></i>{% endif %}
+                            {{ topic.name }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card chatbot-card">
+            <div class="card-header">
+                <h2><i class="fas fa-robot"></i> AI Study Assistant</h2>
+                <span class="badge badge-success">Online</span>
+            </div>
+            <div class="chat-container" id="chatContainer">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            <p>👋 Hello! I'm your AI Study Assistant. How can I help you today?</p>
+                            <p class="message-hint">Try asking about your syllabus, generating a plan, or logging study time!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <div class="suggestion-chips" id="suggestionChips">
+                        <button class="chip" onclick="sendChatMessage('Analyze my syllabus')">📊 Analyze</button>
+                        <button class="chip" onclick="sendChatMessage('Generate a study plan')">📅 Plan</button>
+                        <button class="chip" onclick="sendChatMessage('Show my progress')">📈 Progress</button>
+                        <button class="chip" onclick="sendChatMessage('Give me study advice')">💡 Advice</button>
+                    </div>
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your studies..." autocomplete="off">
+                        <button class="btn-send" id="sendBtn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card plan-card">
+        <div class="card-header">
+            <h2><i class="fas fa-calendar-alt"></i> Study Plan</h2>
+            {% if has_plan %}
+            <span class="badge badge-success">Active</span>
+            {% else %}
+            <span class="badge badge-warning">Not Generated</span>
+            {% endif %}
+        </div>
+        <div class="card-body" id="planContainer">
+            {% if plan %}
+            <div class="plan-info">
+                <span><i class="fas fa-calendar"></i> {{ plan.start }} → {{ plan.end }}</span>
+                <span><i class="fas fa-bullseye"></i> {{ plan.daily_target }}h/day</span>
+            </div>
+            <div class="weeks-container">
+                {% for week in plan.weeks %}
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week {{ loop.index }}</h3>
+                        <span>{{ week.week_start }}</span>
+                    </div>
+                    <div class="week-days">
+                        {% for day_name, day in week.days.items() %}
+                        <div class="day-plan {% if day.sessions|length == 0 %}empty{% endif %}" title="{{ day_name }}: {{ day.total_minutes }}min">
+                            <div class="day-name">{{ day_name[:3] }}</div>
+                            {% if day.sessions|length > 0 %}
+                            <div class="day-dot active"></div>
+                            <div class="day-minutes">{{ day.total_minutes }}m</div>
+                            {% else %}
+                            <div class="day-dot inactive"></div>
+                            <div class="day-minutes rest">Rest</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <i class="fas fa-calendar-plus"></i>
+                <h3>No Study Plan Yet</h3>
+                <p>Generate a personalized study plan to get started.</p>
+                <button class="btn btn-primary" onclick="generatePlan()">
+                    <i class="fas fa-magic"></i> Generate Now
+                </button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card log-card">
+        <div class="card-header">
+            <h2><i class="fas fa-pen"></i> Log Study Session</h2>
+        </div>
+        <div class="card-body">
+            <form id="logForm" class="log-form" onsubmit="logSession(event)">
+                <div class="form-group">
+                    <label for="logSubject">Subject</label>
+                    <select id="logSubject" required>
+                        <option value="">Select subject...</option>
+                        {% for subj in subjects %}
+                        <option value="{{ subj.name }}">{{ subj.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="logTopic">Topic</label>
+                    <input type="text" id="logTopic" placeholder="e.g., Linear Algebra" required>
+                </div>
+                <div class="form-group">
+                    <label for="logMinutes">Minutes</label>
+                    <input type="number" id="logMinutes" placeholder="e.g., 60" min="1" max="480" value="60" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-check"></i> Log Session
+                </button>
+            </form>
+            <div id="logResult" class="log-result hidden"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+const dashboardData = {{ {
+    "subjects": subjects,
+    "analysis": {
+        "total_pending_hours": analysis.total_pending_hours,
+        "weak_subjects": analysis.weak_subjects,
+        "hard_topics": analysis.hard_topics,
+        "priorities": analysis.priorities
+    },
+    "progress": progress
+}| tojson }};
+
+function updateStats(data) {
+    document.getElementById('totalHours').textContent = data.analysis.total_pending_hours.toFixed(1);
+    document.getElementById('weakCount').textContent = data.analysis.weak_subjects.length;
+    document.getElementById('streak').textContent = data.progress.streak;
+    document.getElementById('hardTopics').textContent = data.analysis.hard_topics.length;
+}
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{
+  "subjects": [
+    {
+      "name": "Mathematics",
+      "exam_date": "2026-07-15",
+      "priority": 1,
+      "confidence_score": 0.35,
+      "topics": [
+        {"name": "Linear Algebra", "difficulty": "hard", "estimated_hours": 5.0},
+        {"name": "Calculus", "difficulty": "hard", "estimated_hours": 6.0},
+        {"name": "Probability", "difficulty": "medium", "estimated_hours": 3.0},
+        {"name": "Statistics", "difficulty": "medium", "estimated_hours": 2.5},
+        {"name": "Differential Equations", "difficulty": "hard", "estimated_hours": 4.0}
+      ]
+    },
+    {
+      "name": "Physics",
+      "exam_date": "2026-07-20",
+      "priority": 2,
+      "confidence_score": 0.50,
+      "topics": [
+        {"name": "Mechanics", "difficulty": "medium", "estimated_hours": 4.0},
+        {"name": "Electromagnetism", "difficulty": "hard", "estimated_hours": 5.0},
+        {"name": "Thermodynamics", "difficulty": "medium", "estimated_hours": 3.0},
+        {"name": "Quantum Physics", "difficulty": "hard", "estimated_hours": 4.0}
+      ]
+    },
+    {
+      "name": "Computer Science",
+      "exam_date": "2026-07-25",
+      "priority": 3,
+      "confidence_score": 0.65,
+      "topics": [
+        {"name": "Data Structures", "difficulty": "medium", "estimated_hours": 3.0},
+        {"name": "Algorithms", "difficulty": "hard", "estimated_hours": 4.0},
+        {"name": "Operating Systems", "difficulty": "medium", "estimated_hours": 2.5},
+        {"name": "Databases", "difficulty": "easy", "estimated_hours": 2.0}
+      ]
+    }
+  ]
+}

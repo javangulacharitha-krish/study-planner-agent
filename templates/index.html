@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Study Planner AI - Home{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <i class="fas fa-sparkles"></i>
+            AI-Powered Study Assistant
+        </div>
+        <h1 class="hero-title">Your Personal<br><span class="gradient-text">Study Planner</span></h1>
+        <p class="hero-subtitle">
+            Let AI analyze your syllabus, track your progress, and create adaptive study plans
+            that help you ace your exams.
+        </p>
+        <div class="hero-actions">
+            <a href="/dashboard" class="btn btn-primary btn-lg">
+                <i class="fas fa-rocket"></i>
+                Get Started
+            </a>
+            <a href="#features" class="btn btn-ghost btn-lg">
+                <i class="fas fa-play-circle"></i>
+                See Features
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Subjects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">14</span>
+                <span class="stat-label">Topics</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Weeks Planned</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">AI Chatbot</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="section-header">
+        <h2>Powerful Features</h2>
+        <p>Everything you need to stay on top of your studies</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #6366f1">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Syllabus Analysis</h3>
+            <p>AI analyzes your syllabus to identify weak subjects, hard topics, and priority areas that need attention.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #8b5cf6">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3>Adaptive Scheduling</h3>
+            <p>Generates personalized study plans based on exam dates, topic difficulty, and your daily progress.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #a855f7">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Progress Tracking</h3>
+            <p>Track study streaks, daily activity, and subject-wise progress with confidence scoring.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #d946ef">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h3>AI Chatbot</h3>
+            <p>Chat with an intelligent assistant that answers questions, gives advice, and helps manage your study plan.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #ec4899">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Session Logging</h3>
+            <p>Log your study sessions easily and watch your confidence scores improve over time.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon" style="--icon-color: #f43f5e">
+                <i class="fas fa-download"></i>
+            </div>
+            <h3>Plan Export</h3>
+            <p>Export your study plan as JSON to use offline or share with study groups.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-card">
+        <h2>Ready to Ace Your Exams?</h2>
+        <p>Start your personalized study journey with AI-powered planning.</p>
+        <a href="/dashboard" class="btn btn-primary btn-lg">
+            <i class="fas fa-arrow-right"></i>
+            Launch Dashboard
+        </a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>Personalized Study Planner AI Agent &mdash; Built with Flask &amp; Pydantic</p>
+</footer>
+{% endblock %}

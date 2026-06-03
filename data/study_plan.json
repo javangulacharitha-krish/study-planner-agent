@@ -1,0 +1,335 @@
+{
+  "student": "Student",
+  "start": "2026-06-01",
+  "end": "2026-06-29",
+  "daily_target_hours": 4.0,
+  "weeks": [
+    {
+      "week_start": "2026-06-01",
+      "days": {
+        "Mon": {
+          "date": "2026-06-01",
+          "total_minutes": 240,
+          "sessions": [
+            {
+              "subject": "Mathematics",
+              "topic": "Linear Algebra",
+              "start": "09:00:00",
+              "end": "10:00:00",
+              "duration": 60
+            },
+            {
+              "subject": "Mathematics",
+              "topic": "Calculus",
+              "start": "10:15:00",
+              "end": "11:15:00",
+              "duration": 60
+            },
+            {
+              "subject": "Mathematics",
+              "topic": "Probability",
+              "start": "11:30:00",
+              "end": "12:15:00",
+              "duration": 45
+            },
+            {
+              "subject": "Mathematics",
+              "topic": "Statistics",
+              "start": "12:30:00",
+              "end": "13:15:00",
+              "duration": 45
+            },
+            {
+              "subject": "Mathematics",
+              "topic": "Differential Equations",
+              "start": "13:30:00",
+              "end": "14:00:00",
+              "duration": 30
+            }
+          ]
+        },
+        "Tue": {
+          "date": "2026-06-02",
+          "total_minutes": 45,
+          "sessions": [
+            {
+              "subject": "Physics",
+              "topic": "Mechanics",
+              "start": "09:00:00",
+              "end": "09:45:00",
+              "duration": 45
+            }
+          ]
+        },
+        "Wed": {
+          "date": "2026-06-03",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Thu": {
+          "date": "2026-06-04",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Fri": {
+          "date": "2026-06-05",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sat": {
+          "date": "2026-06-06",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sun": {
+          "date": "2026-06-07",
+          "total_minutes": 0,
+          "sessions": []
+        }
+      }
+    },
+    {
+      "week_start": "2026-06-08",
+      "days": {
+        "Mon": {
+          "date": "2026-06-08",
+          "total_minutes": 240,
+          "sessions": [
+            {
+              "subject": "Mathematics",
+              "topic": "Linear Algebra",
+              "start": "09:00:00",
+              "end": "10:00:00",
+              "duration": 60
+            },
+            {
+              "subject": "Mathematics",
+              "topic": "Statistics",
+              "start": "10:15:00",
+              "end": "11:00:00",
+              "duration": 45
+            },
+            {
+              "subject": "Physics",
+              "topic": "Electromagnetism",
+              "start": "11:15:00",
+              "end": "12:15:00",
+              "duration": 60
+            },
+            {
+              "subject": "Physics",
+              "topic": "Thermodynamics",
+              "start": "12:30:00",
+              "end": "13:15:00",
+              "duration": 45
+            },
+            {
+              "subject": "Physics",
+              "topic": "Quantum Physics",
+              "start": "13:30:00",
+              "end": "14:00:00",
+              "duration": 30
+            }
+          ]
+        },
+        "Tue": {
+          "date": "2026-06-09",
+          "total_minutes": 180,
+          "sessions": [
+            {
+              "subject": "Computer Science",
+              "topic": "Data Structures",
+              "start": "09:00:00",
+              "end": "09:45:00",
+              "duration": 45
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Algorithms",
+              "start": "10:00:00",
+              "end": "11:00:00",
+              "duration": 60
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Operating Systems",
+              "start": "11:15:00",
+              "end": "12:00:00",
+              "duration": 45
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Databases",
+              "start": "12:15:00",
+              "end": "12:45:00",
+              "duration": 30
+            }
+          ]
+        },
+        "Wed": {
+          "date": "2026-06-10",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Thu": {
+          "date": "2026-06-11",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Fri": {
+          "date": "2026-06-12",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sat": {
+          "date": "2026-06-13",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sun": {
+          "date": "2026-06-14",
+          "total_minutes": 0,
+          "sessions": []
+        }
+      }
+    },
+    {
+      "week_start": "2026-06-15",
+      "days": {
+        "Mon": {
+          "date": "2026-06-15",
+          "total_minutes": 195,
+          "sessions": [
+            {
+              "subject": "Mathematics",
+              "topic": "Differential Equations",
+              "start": "09:00:00",
+              "end": "10:00:00",
+              "duration": 60
+            },
+            {
+              "subject": "Physics",
+              "topic": "Mechanics",
+              "start": "10:15:00",
+              "end": "11:00:00",
+              "duration": 45
+            },
+            {
+              "subject": "Physics",
+              "topic": "Electromagnetism",
+              "start": "11:15:00",
+              "end": "12:15:00",
+              "duration": 60
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Databases",
+              "start": "12:30:00",
+              "end": "13:00:00",
+              "duration": 30
+            }
+          ]
+        },
+        "Tue": {
+          "date": "2026-06-16",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Wed": {
+          "date": "2026-06-17",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Thu": {
+          "date": "2026-06-18",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Fri": {
+          "date": "2026-06-19",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sat": {
+          "date": "2026-06-20",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sun": {
+          "date": "2026-06-21",
+          "total_minutes": 0,
+          "sessions": []
+        }
+      }
+    },
+    {
+      "week_start": "2026-06-22",
+      "days": {
+        "Mon": {
+          "date": "2026-06-22",
+          "total_minutes": 195,
+          "sessions": [
+            {
+              "subject": "Mathematics",
+              "topic": "Probability",
+              "start": "09:00:00",
+              "end": "09:45:00",
+              "duration": 45
+            },
+            {
+              "subject": "Physics",
+              "topic": "Electromagnetism",
+              "start": "10:00:00",
+              "end": "11:00:00",
+              "duration": 60
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Data Structures",
+              "start": "11:15:00",
+              "end": "12:00:00",
+              "duration": 45
+            },
+            {
+              "subject": "Computer Science",
+              "topic": "Operating Systems",
+              "start": "12:15:00",
+              "end": "13:00:00",
+              "duration": 45
+            }
+          ]
+        },
+        "Tue": {
+          "date": "2026-06-23",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Wed": {
+          "date": "2026-06-24",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Thu": {
+          "date": "2026-06-25",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Fri": {
+          "date": "2026-06-26",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sat": {
+          "date": "2026-06-27",
+          "total_minutes": 0,
+          "sessions": []
+        },
+        "Sun": {
+          "date": "2026-06-28",
+          "total_minutes": 0,
+          "sessions": []
+        }
+      }
+    }
+  ]
+}
